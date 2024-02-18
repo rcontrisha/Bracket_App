@@ -1,15 +1,12 @@
-import 'package:fincore/pages/auth/forgot_password.dart';
-import 'package:fincore/pages/auth/login.dart';
-import 'package:fincore/pages/auth/new_password.dart';
-import 'package:fincore/pages/auth/verification_code.dart';
-import 'package:fincore/pages/homepage/home.dart';
-import 'package:fincore/pages/loanprospect/add_loanprospect.dart';
-import 'package:fincore/pages/loanprospect/loan_prospect.dart';
-import 'package:fincore/pages/loanprospect/menu/menu_person.dart';
+import 'package:fincore/pages/auth/register_page.dart';
 import 'package:fincore/pages/main_page.dart';
 import 'package:fincore/pages/onboardingpage/onboarding.dart';
+import 'package:fincore/pages/saved%20bracket/tournament_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../pages/bracket/create_bracket.dart';
+import '../pages/homepage/home.dart';
+import '../pages/auth/login_page.dart';
 
 part 'app_routes.dart';
 
@@ -26,21 +23,12 @@ class AppPages {
           return const HomePage();
         case Routes.onboarding:
           return const OnBoarding();
-        case Routes.loan:
-          return const LoanProspect();
-        case Routes.addloan:
-          return const AddLoanProspect();
-        case Routes.menuperson:
-          return const MenuPerson();
-        // authentication
         case Routes.login:
-          return const LoginPage();
-        case Routes.forgotpassword:
-          return const ForgotPassword();
-        case Routes.verification:
-          return const VerificationCode();
-        case Routes.newpassword:
-          return const NewPassword();
+          return LoginPage();
+        case Routes.register:
+          return RegisterPage();
+        case Routes.tournament:
+          return TournamentListPage();
       }
       return const Scaffold(
         body: Center(

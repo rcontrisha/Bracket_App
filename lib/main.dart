@@ -1,10 +1,12 @@
+import 'package:fincore/database.dart';
 import 'package:fincore/pages/homepage/home.dart';
 import 'package:fincore/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {

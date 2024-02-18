@@ -1,4 +1,3 @@
-import 'package:fincore/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 class CostomNavbar extends StatelessWidget {
@@ -40,14 +39,16 @@ class CostomNavbar extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        // onClick(1);
-                        Navigator.pushNamed(context, Routes.loan);
+                    IconButton(
+                      onPressed: () {
+                        onClick(1);
                       },
-                      child: Image.asset("assets/icons/Icon-Task.png"),
+                      icon: const Icon(
+                        Icons.amp_stories_rounded,
+                        color: Color.fromARGB(255, 103, 102, 102),
+                      ),
                     ),
-                    const Text("Loan Prospect",
+                    const Text("Create Brackets",
                         style: TextStyle(
                           color: Color.fromARGB(255, 103, 102, 102),
                           fontWeight: FontWeight.w700,
@@ -61,11 +62,11 @@ class CostomNavbar extends StatelessWidget {
                         onClick(2);
                       },
                       icon: const Icon(
-                        Icons.person_rounded,
+                        Icons.add_moderator_rounded,
                         color: Color.fromARGB(255, 103, 102, 102),
                       ),
                     ),
-                    const Text("Profile",
+                    const Text("Brackets",
                         style: TextStyle(
                           color: Color.fromARGB(255, 103, 102, 102),
                           fontWeight: FontWeight.w700,

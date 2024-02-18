@@ -1,5 +1,4 @@
 import 'package:fincore/component/button_primary.dart';
-import 'package:fincore/component/footer_copyright.dart';
 import 'package:fincore/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +25,7 @@ class _OnBoardingState extends State<OnBoarding> {
               Container(
                 alignment: Alignment.topRight,
                 child: const Text(
-                  "Skip",
+                  "Fincore Brackets App",
                   style: TextStyle(
                       color: Color(0xFF757575),
                       fontWeight: FontWeight.w400,
@@ -49,7 +48,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 height: 12,
               ),
               const Text(
-                "Easy to collector monry",
+                "Easy to generate Brackets Tournaments",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 12,
@@ -60,7 +59,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 height: 81,
               ),
               const Text(
-                'Amet minim mollit non deserunt',
+                'Make your Tournament brackets',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -69,7 +68,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 ),
               ),
               const Text(
-                'ullamco est sit aliqua dolor do amet',
+                'Easy To Use',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
@@ -81,16 +80,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 height: 8,
               ),
               const Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
-                ),
-              ),
-              const Text(
-                'Nunc vulputate libero et velit interdum.',
+                'make easy generatetournament brackets',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 12,
@@ -103,9 +93,8 @@ class _OnBoardingState extends State<OnBoarding> {
               ),
               ButtonPrimary(onTap: next, text: "Next"),
               const SizedBox(
-                height: 40,
+                height: 60,
               ),
-              const FooterCopyright(),
               const SizedBox(
                 height: 24,
               ),
