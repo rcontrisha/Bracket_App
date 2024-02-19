@@ -67,8 +67,7 @@ class _ExportSingleState extends State<ExportSingle> {
           ),
           IconButton(
             icon: Icon(Icons.save),
-            onPressed: () =>
-                _saveBracketAsImage(context), // Tambahkan context di sini
+            onPressed: () => _saveBracketAsImage(context),
           ),
         ],
       ),
@@ -78,100 +77,103 @@ class _ExportSingleState extends State<ExportSingle> {
           scrollDirection: Axis.vertical,
           child: RepaintBoundary(
             key: _globalKey,
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text("Nama Turnamen: ${widget.namaTurnamen}"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text("Jenis Olahraga: ${widget.tipeOlahraga}"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text("Jumlah Partisipan: ${widget.jumlahPartisipan}"),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text("Format Pertandingan: ${widget.formatTurnamen}"),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: TBracket<Team>(
-                    key: bracketKey,
-                    space: 200 / 4,
-                    separation: 150,
-                    stageWidth: 200,
-                    onSameTeam: (team1, team2) {
-                      if (team1 != null && team2 != null) {
-                        return team1.name == team2.name;
-                      }
-                      return false;
-                    },
-                    hadderBuilder: (context, index, count) => Container(
-                      alignment: Alignment.center,
-                      width: 220,
-                      padding: const EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        border: Border.all(width: 1),
-                      ),
-                      child: Text(
-                          "Stage ${count - 1 == index ? 'winner' : index + 1}"),
-                    ),
-                    connectorColor: const Color.fromARGB(144, 244, 67, 54),
-                    winnerConnectorColor: Colors.green,
-                    teamContainerDecoration: BracketBoxDecroction(
-                        borderRadious: 15, color: Colors.black),
-                    stageIndicatorBoxDecroction:
-                        BracketStageIndicatorBoxDecroction(
-                      borderRadious: const Radius.circular(15),
-                      primaryColor: Color.fromARGB(15, 247, 123, 123),
-                      secondaryColor: Color.fromARGB(15, 194, 236, 147),
-                    ),
-                    containt: allTeams,
-                    teamNameBuilder: (Team t) {
-                      return BracketText(
-                        text: t.name,
-                        textStyle: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+            child: Container(
+              color: Colors.white, // Set background color to white
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 30,
                         ),
-                      );
-                    },
-                    onContainerTapDown:
-                        (Team? model, TapDownDetails tapDownDetails) {
-                      if (model == null) {
-                        print(null);
-                      } else {
-                        print(model.name);
-                      }
-                    },
-                    onLineIconPress: ((team1, team2, tapDownDetails) {
-                      if (team1 != null && team2 != null) {
-                        // Simulate match result (for demo purposes)
-                        print("${team1.name} and ${team2.name}");
-                      } else {
-                        print(null);
-                      }
-                    }),
-                    context: context,
+                        Text("Nama Turnamen: ${widget.namaTurnamen}"),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text("Jenis Olahraga: ${widget.tipeOlahraga}"),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text("Jumlah Partisipan: ${widget.jumlahPartisipan}"),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text("Format Pertandingan: ${widget.formatTurnamen}"),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 8,
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: TBracket<Team>(
+                      key: bracketKey,
+                      space: 200 / 4,
+                      separation: 150,
+                      stageWidth: 200,
+                      onSameTeam: (team1, team2) {
+                        if (team1 != null && team2 != null) {
+                          return team1.name == team2.name;
+                        }
+                        return false;
+                      },
+                      hadderBuilder: (context, index, count) => Container(
+                        alignment: Alignment.center,
+                        width: 220,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(width: 1),
+                        ),
+                        child: Text(
+                            "Stage ${count - 1 == index ? 'winner' : index + 1}"),
+                      ),
+                      connectorColor: const Color.fromARGB(144, 244, 67, 54),
+                      winnerConnectorColor: Colors.green,
+                      teamContainerDecoration: BracketBoxDecroction(
+                          borderRadious: 15, color: Colors.black),
+                      stageIndicatorBoxDecroction:
+                          BracketStageIndicatorBoxDecroction(
+                        borderRadious: const Radius.circular(15),
+                        primaryColor: Color.fromARGB(15, 247, 123, 123),
+                        secondaryColor: Color.fromARGB(15, 194, 236, 147),
+                      ),
+                      containt: allTeams,
+                      teamNameBuilder: (Team t) {
+                        return BracketText(
+                          text: t.name,
+                          textStyle: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      },
+                      onContainerTapDown:
+                          (Team? model, TapDownDetails tapDownDetails) {
+                        if (model == null) {
+                          print(null);
+                        } else {
+                          print(model.name);
+                        }
+                      },
+                      onLineIconPress: ((team1, team2, tapDownDetails) {
+                        if (team1 != null && team2 != null) {
+                          // Simulate match result (for demo purposes)
+                          print("${team1.name} and ${team2.name}");
+                        } else {
+                          print(null);
+                        }
+                      }),
+                      context: context,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  )
+                ],
+              ),
             ),
           ),
         ),

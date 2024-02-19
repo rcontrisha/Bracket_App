@@ -96,27 +96,30 @@ class _ExportDoubleState extends State<ExportDouble> {
               SizedBox(height: 20),
               RepaintBoundary(
                 key: _upperGlobalKey,
-                child: TBracket<Team>(
-                  containt: upperBracket,
-                  space: 20,
-                  hadderBuilder: (context, index, count) => Container(
-                    alignment: Alignment.center,
-                    width: 100,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey,
-                      borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  color: Colors.white,
+                  child: TBracket<Team>(
+                    containt: upperBracket,
+                    space: 20,
+                    hadderBuilder: (context, index, count) => Container(
+                      alignment: Alignment.center,
+                      width: 100,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text(
+                        'Round ${index + 1}',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                    child: Text(
-                      'Round ${index + 1}',
-                      style: TextStyle(color: Colors.white),
+                    teamNameBuilder: (team) => BracketText(
+                      text: team.name,
+                      textStyle: TextStyle(color: Colors.black),
                     ),
+                    context: context,
                   ),
-                  teamNameBuilder: (team) => BracketText(
-                    text: team.name,
-                    textStyle: TextStyle(color: Colors.black),
-                  ),
-                  context: context,
                 ),
               ),
               SizedBox(height: 20),
@@ -124,27 +127,30 @@ class _ExportDoubleState extends State<ExportDouble> {
               SizedBox(height: 20),
               RepaintBoundary(
                 key: _lowerGlobalKey,
-                child: TBracket<Team>(
-                  containt: lowerBracket,
-                  space: 20,
-                  hadderBuilder: (context, index, count) => Container(
-                    alignment: Alignment.center,
-                    width: 100,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.blueGrey,
-                      borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  color: Colors.white,
+                  child: TBracket<Team>(
+                    containt: lowerBracket,
+                    space: 20,
+                    hadderBuilder: (context, index, count) => Container(
+                      alignment: Alignment.center,
+                      width: 100,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text(
+                        'Round ${index + 1}',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                    child: Text(
-                      'Round ${index + 1}',
-                      style: TextStyle(color: Colors.white),
+                    teamNameBuilder: (team) => BracketText(
+                      text: team.name,
+                      textStyle: TextStyle(color: Colors.black),
                     ),
+                    context: context,
                   ),
-                  teamNameBuilder: (team) => BracketText(
-                    text: team.name,
-                    textStyle: TextStyle(color: Colors.black),
-                  ),
-                  context: context,
                 ),
               ),
             ],
