@@ -184,9 +184,18 @@ class _ExportDoubleState extends State<ExportDouble> {
     final upperImage = await _captureScreenshot(_upperGlobalKey);
     final lowerImage = await _captureScreenshot(_lowerGlobalKey);
 
-    final directory = await getExternalStorageDirectory();
+    final directory = await _getSaveDirectory();
+    if (directory == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Gagal menyimpan gambar'),
+        ),
+      );
+      return;
+    }
+
     final bracketDirectory =
-        Directory('${directory!.path}/${widget.namaTurnamen}');
+        Directory('${directory.path}/${widget.namaTurnamen}');
     await bracketDirectory.create(recursive: true);
 
     final imagePathUpper = '${bracketDirectory.path}/upper.png';
@@ -202,6 +211,15 @@ class _ExportDoubleState extends State<ExportDouble> {
             'Gambar bawah disimpan di: $imagePathLower'),
       ),
     );
+  }
+
+  Future<Directory?> _getSaveDirectory() async {
+    if (Platform.isAndroid) {
+      return getExternalStorageDirectory();
+    } else if (Platform.isWindows) {
+      return getApplicationDocumentsDirectory();
+    }
+    return null;
   }
 
   Future<Uint8List?> _captureScreenshot(GlobalKey key) async {
