@@ -235,8 +235,14 @@ class _ExportSingleState extends State<ExportSingle> {
     Uint8List pngBytes = byteData!.buffer.asUint8List();
 
     // Dapatkan direktori penyimpanan eksternal
-    final directory = await getExternalStorageDirectory();
-    final externalPath = directory!.path;
+    late Directory directory;
+    if (Platform.isAndroid) {
+      directory = (await getExternalStorageDirectory())!;
+    } else if (Platform.isWindows) {
+      directory = await getApplicationDocumentsDirectory();
+    }
+
+    final externalPath = directory.path;
 
     // Tentukan direktori tujuan
     final destinationDirectory =
