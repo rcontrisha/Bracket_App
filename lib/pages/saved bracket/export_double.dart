@@ -29,12 +29,14 @@ class ExportDouble extends StatefulWidget {
 class _ExportDoubleState extends State<ExportDouble> {
   late List<List<Team>> upperBracket;
   late List<List<Team>> lowerBracket;
-  final GlobalKey _upperGlobalKey = GlobalKey();
-  final GlobalKey _lowerGlobalKey = GlobalKey();
+  late GlobalKey _upperGlobalKey;
+  late GlobalKey _lowerGlobalKey;
 
   @override
   void initState() {
     super.initState();
+    _upperGlobalKey = GlobalKey();
+    _lowerGlobalKey = GlobalKey();
     var teams = _generateTeams(int.parse(widget.jumlahPartisipan));
     upperBracket = teams[0];
     lowerBracket = teams[1];
@@ -75,6 +77,10 @@ class _ExportDoubleState extends State<ExportDouble> {
           IconButton(
             icon: Icon(Icons.save),
             onPressed: _saveBracketAsImage,
+          ),
+          IconButton(
+            icon: Icon(Icons.shuffle),
+            onPressed: _shuffleTeams,
           ),
         ],
       ),
@@ -234,6 +240,15 @@ class _ExportDoubleState extends State<ExportDouble> {
       print("Error capturing screenshot: $e");
       return null;
     }
+  }
+
+  void _shuffleTeams() {
+    setState(() {
+      upperBracket.forEach((round) => round.shuffle());
+      lowerBracket.forEach((round) => round.shuffle());
+    });
+    _upperGlobalKey = GlobalKey();
+    _lowerGlobalKey = GlobalKey();
   }
 }
 
